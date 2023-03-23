@@ -21,7 +21,7 @@ try:
             job_link = post.find('a')['href']  # extract the job link from the anchor tag
             jobs[job_title] = job_link  # add the job title and link to the dictionary
 
-    with open('jobs.json', 'w') as f:
+    with open('output.json', 'w') as f:
         json.dump(jobs, f)  # save the dictionary to a JSON file
 
 except Exception as e:
