@@ -38,5 +38,5 @@ jobs:
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git add -u jobs.json
-          git commit -m "Update job notifications"
+          git commit -m "Update Job notifications"
           git push
