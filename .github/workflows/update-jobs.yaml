@@ -1,0 +1,29 @@
+name: Scrape and Update Jobs
+
+on:
+  schedule:
+    - cron: '0 3,12 * * *' # runs at 9am and 6pm IST (3am and 12pm UTC)
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Scrape jobs
+        run: python scrape_jobs.py
+
+      - name: Commit and push changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: Github Actions
+          author_email: actions@github.com
+          message: Update jobs.json
+          add: jobs.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
