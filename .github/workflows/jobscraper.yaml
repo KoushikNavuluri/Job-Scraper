@@ -33,6 +33,7 @@ jobs:
         run: |
           rm -f jobs.json
           mv output.json jobs.json
+          ls -l jobs.json
       - name: Commit changes
         run: |
           git config --global user.email "action@github.com"
