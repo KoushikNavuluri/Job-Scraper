@@ -33,11 +33,11 @@ jobs:
         run: |
           rm -f jobs.json
           mv output.json jobs.json
-          ls -l jobs.json
       - name: Commit changes
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          git add -u jobs.json
+          git rm jobs.json
+          git add jobs.json
           git commit -m "Update Job notifications"
           git push
