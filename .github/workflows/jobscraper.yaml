@@ -27,11 +27,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install beautifulsoup4 requests
       - name: Scrape job notifications
-        run: python jobscraper.py
+        run: python jobscraper.py > jobs.json
       - name: Commit changes
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          git add -u jobs.json
-          git commit -m "Update Job Notifications"
+          git add jobs.json
+          git commit -m "Update job notifications"
           git push
