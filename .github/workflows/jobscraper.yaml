@@ -28,8 +28,11 @@ jobs:
           pip install beautifulsoup4 requests
       - name: Scrape job notifications
         run: python jobscraper.py > jobs.json
-      - name: Print job notifications
-        run: cat jobs.json
+      - run: python jobscraper.py
+      - name: Replace existing jobs.json with new output
+        run: |
+          rm -f jobs.json
+          mv output.json jobs.json
       - name: Commit changes
         run: |
           git config --global user.email "action@github.com"
