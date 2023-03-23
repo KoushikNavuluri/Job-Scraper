@@ -5,7 +5,7 @@ name: Scrape Job Notifications
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/2 * * * *"
   push:
     branches: [ main ]
 
@@ -27,9 +27,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install beautifulsoup4 requests
       - name: Scrape job notifications
-        run: python jobscraper.py
-      - name: Add JSON file to repository
-        uses: actions/upload-artifact@v2
-        with:
-          name: jobs
-          path: jobs.json
+        run: python scrape_jobs.py
+      - name: Commit changes
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add jobs.json
+          git commit -m "Update job notifications"
+          git push
