@@ -24,7 +24,7 @@ You can customize the website URL and the number of pages to scrape by editing t
 ## Automating with Github Actions
 To automate the scraping process and run the script daily, you can use Github Actions. A sample workflow file is included in the '.github/workflows' directory that runs the script at 9am and 6pm IST every day and pushes the changes to the repository.
 
-To use this workflow, you need to add the Github Actions token as a secret in your repository settings.
+To use this workflow, you need to configure the python workflow from the actions sections in the repository tabs. 
 
 ## Contributing
 Contributions are welcome! If you find any bugs or issues with the script, please open a Github issue or submit a pull request.
