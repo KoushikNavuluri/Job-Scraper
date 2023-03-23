@@ -5,7 +5,7 @@ name: Scrape Job Notifications
 
 on:
   schedule:
-    - cron: "*/2 * * * *"
+    - cron: "0 1,12 * * *"
   push:
     branches: [ main ]
 
